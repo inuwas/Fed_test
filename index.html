@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<html lang="en" ng-app="MyApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body ng-controller="myController">
+      <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-md-6 col-lg-8 add-dotted-border  full-height">
+            <h1><small>Corporate account</small></h1>
+            <h3>{{clientStuff.name}}</h3>
+               <div class="row add-padding-bottom">
+                  <div class="col-sm-2 col-md-3 col-lg-6 add-border-right " >
+                    <p>{{clientStuff.phone}}</p>
+                    <p><a href="#">{{clientStuff.id}}</a></p>
+                    <p>NP:&nbsp<b><span ng-bind="clientStuff.net_position | currency: '$'"></span></b></p>
+                  </div>
+                  <div class="col-sm-2 col-md-3 col-lg-6">
+                  <h4><small>Main Contact&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></small></h4>
+                  <h4>{{main_contact.name}}</h4>
+                  <p>{{main_contact.position}}</p> 
+                  </div> 
+               </div>
+               <div class="row">
+                 <div class="add-border-top">
+                 <div class="col-sm-2 col-md-3 col-lg-3">
+                   <h3><small>Dealer</small></h3>
+                    <h5 ng-bind="clientStuff.dealer"></h5>
+                  </div>
+                  <div class="col-sm-2 col-md-3 col-lg-3">
+                    <h3><small>Last Login</small></h3>
+                    <h5 ng-bind="clientStuff.last_login"></h5>
+                  </div>
+                  <div class="col-sm-2 col-md-3 col-lg-3">
+                    <h3><small>Last Call</small></h3>
+                    <h5><span>{{clientStuff.last_call.date | datefilter:"medium"}}</span> (<span ng-bind="clientStuff.last_call.contact"></span>)</h5>
+                  </div>
+                  </div>
+               </div>
+               <div class="row">
+                 <div class="col-sm3 col-md-6 col-lg-8" >
+                   <h3><small>Last Notes&nbsp;&nbsp;<span class="glyphicon glyphicon-comment"></span></small></h3>
+                    <div ng-repeat="notes in notesArr">
+                      <p><b>{{notes.date | datefilter: "MMM d"}} &nbsp; &nbsp;  {{notes.author}}&nbsp; &nbsp;{{notes.text}}</b></p>
+                    </div>
+                 </div>
+               </div>
+            </div>
+            <!--Left side column-->
+            <div class="col-sm-9 col-md-6 col-lg-4" >
+              <h1><small>Active Trade</small></h1>
+              <h4 class="add-padding-bottom">{{tradeObj.id}}</h4>
+               <table class="table">
+               <tr class="table-no-border"><td><h4><small>BUY</small></h4></td><td>{{tradeObj.buy.amount}}</td><td>{{tradeObj.buy.currency}}</td></tr>
+               <tr><td><h4><small>SELL</small></h4></td><td>{{tradeObj.sell.amount}}</td><td>{{tradeObj.sell.currency}}</td></tr>
+               <tr><td><h4><small>MARGIN</small></h4></td><td>{{tradeObj.margin}}%</td><td>&nbsp;</td></tr>
+               </table>
+               <div> <h1><small>Dealer</small></h1>
+               <h4>{{tradeObj.dealer}}</h4>
+               </div> 
+            </div>
+          </div>
+      </div>
+      <footer class="footer navbar-static-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-3 col-md-6 col-lg-8">
+              <span class="add-margin"><button type="button" class="btn btn-success btn-lg button-padding">ACCEPT</button></span>
+              <span class="add-margin"><button type="button" class="btn btn-primary btn-lg button-padding">TRANSFER</button></span>
+            </div>
+            <div class="col-sm-9 col-md-6 col-lg-4">
+              <button type="button" class="btn btn-danger btn-lg button-padding">DECLINE</button>
+            </div>
+          </div> 
+        </div>
+      </footer>
+      <script type="text/javascript" src="./dist/vendor.bundle.js"></script>
+      <script type="text/javascript" src="./dist/bundle.js"></script>
+  </body>
+</html>
+

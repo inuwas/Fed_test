@@ -1,0 +1,13 @@
+{
+  "id":"XA12891231",
+  "buy":{
+    "amount":12000,
+    "currency":"EUR"
+  },
+  "sell":{
+    "amount":10000,
+    "currency":"GBP"
+  },
+  "margin":15,
+  "dealer":"Tony Stark"
+}
